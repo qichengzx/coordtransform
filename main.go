@@ -108,5 +108,5 @@ func transformlng(lon, lat float64) float64 {
 }
 
 func isOutOFChina(lon, lat float64) bool {
-	return !(lon > 39.386 && lon < 135.05 && lat > 3.86 && lat < 53.55)
+	return !(lon > 72.004 && lon < 135.05 && lat > 3.86 && lat < 53.55)
 }
