@@ -74,9 +74,7 @@ func WGS84toBD09(lon, lat float64) (float64, float64) {
 }
 
 func delta(lon, lat float64) (float64, float64) {
-	dlat := transformlat(lon-105.0, lat-35.0)
-	dlon := transformlng(lon-105.0, lat-35.0)
-
+	dlat, dlon := transform(lon-105.0, lat-35.0)
 	radlat := lat / 180.0 * math.Pi
 	magic := math.Sin(radlat)
 	magic = 1 - OFFSET*magic*magic
@@ -90,21 +88,21 @@ func delta(lon, lat float64) (float64, float64) {
 
 	return mgLon, mgLat
 }
-
-func transformlat(lon, lat float64) float64 {
-	var ret = -100.0 + 2.0*lon + 3.0*lat + 0.2*lat*lat + 0.1*lon*lat + 0.2*math.Sqrt(math.Abs(lon))
-	ret += (20.0*math.Sin(6.0*lon*math.Pi) + 20.0*math.Sin(2.0*lon*math.Pi)) * 2.0 / 3.0
-	ret += (20.0*math.Sin(lat*math.Pi) + 40.0*math.Sin(lat/3.0*math.Pi)) * 2.0 / 3.0
-	ret += (160.0*math.Sin(lat/12.0*math.Pi) + 320*math.Sin(lat*math.Pi/30.0)) * 2.0 / 3.0
-	return ret
-}
-
-func transformlng(lon, lat float64) float64 {
-	var ret = 300.0 + lon + 2.0*lat + 0.1*lon*lon + 0.1*lon*lat + 0.1*math.Sqrt(math.Abs(lon))
-	ret += (20.0*math.Sin(6.0*lon*math.Pi) + 20.0*math.Sin(2.0*lon*math.Pi)) * 2.0 / 3.0
-	ret += (20.0*math.Sin(lon*math.Pi) + 40.0*math.Sin(lon/3.0*math.Pi)) * 2.0 / 3.0
-	ret += (150.0*math.Sin(lon/12.0*math.Pi) + 300.0*math.Sin(lon/30.0*math.Pi)) * 2.0 / 3.0
-	return ret
+func transform(lon, lat float64) (x, y float64) {
+	var lonlat = lon * lat
+	var absX = math.Sqrt(math.Abs(lon))
+	var lonPi, latPi = lon * math.Pi, lat * math.Pi
+	var d = 20.0*math.Sin(6.0*lonPi) + 20.0*math.Sin(2.0*lonPi)
+	x, y = d, d
+	x += 20.0*math.Sin(latPi) + 40.0*math.Sin(latPi/3.0)
+	y += 20.0*math.Sin(lonPi) + 40.0*math.Sin(lonPi/3.0)
+	x += 160.0*math.Sin(latPi/12.0) + 320*math.Sin(latPi/30.0)
+	y += 150.0*math.Sin(lonPi/12.0) + 300.0*math.Sin(lonPi/30.0)
+	x *= 2.0 / 3.0
+	y *= 2.0 / 3.0
+	x += -100.0 + 2.0*lon + 3.0*lat + 0.2*lat*lat + 0.1*lonlat + 0.2*absX
+	y += 300.0 + lon + 2.0*lat + 0.1*lon*lon + 0.1*lonlat + 0.1*absX
+	return
 }
 
 func isOutOFChina(lon, lat float64) bool {
