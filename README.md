@@ -8,7 +8,7 @@ Features
 ------
 
 - [火星坐标系->百度坐标系](https://github.com/qichengzx/coordtransform/blob/ecfa225e65d96871733941ddc35ff8194c13e9f3/main.go#L32)
-- [百度坐标系->WGS84坐标系](https://github.com/qichengzx/coordtransform/blob/ecfa225e65d96871733941ddc35ff8194c13e9f3/main.go#L18)
+- [百度坐标系->火星坐标系](https://github.com/qichengzx/coordtransform/blob/ecfa225e65d96871733941ddc35ff8194c13e9f3/main.go#L18)
 - [WGS84坐标系->火星坐标系](https://github.com/qichengzx/coordtransform/blob/ecfa225e65d96871733941ddc35ff8194c13e9f3/main.go#L43)
 - [火星坐标系->WGS84坐标系](https://github.com/qichengzx/coordtransform/blob/ecfa225e65d96871733941ddc35ff8194c13e9f3/main.go#L54)
 - [WGS84坐标系->百度坐标系](https://github.com/qichengzx/coordtransform/blob/ecfa225e65d96871733941ddc35ff8194c13e9f3/main.go#L71)
