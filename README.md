@@ -4,6 +4,12 @@ coordtransform
 
 提供百度坐标系(bd-09)、火星坐标系(国测局坐标系、gcj02)、WGS84坐标系的相互转换，基于 Go 语言，无特殊依赖。
 
+python版本：https://github.com/wandergis/coordTransform_py
+
+命令行版本(支持模块或在命令行直接转换geojson数据)：https://github.com/wandergis/coordtransform-cli
+
+js版本：https://github.com/wandergis/coordtransform
+
 Features
 ------
 
