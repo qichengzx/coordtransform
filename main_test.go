@@ -1,4 +1,4 @@
-package coordTransform
+package coordtransform
 
 import (
 	"testing"

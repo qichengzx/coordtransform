@@ -39,12 +39,12 @@ import(
 )
 
 func main() {
-	fmt.Println(coordTransform.BD09toGCJ02(116.404, 39.915))
-	fmt.Println(coordTransform.GCJ02toBD09(116.404, 39.915))
-	fmt.Println(coordTransform.WGS84toGCJ02(116.404, 39.915))
-	fmt.Println(coordTransform.GCJ02toWGS84(116.404, 39.915))
-	fmt.Println(coordTransform.BD09toWGS84(116.404, 39.915))
-	fmt.Println(coordTransform.WGS84toBD09(116.404, 39.915))
+	fmt.Println(coordtransform.BD09toGCJ02(116.404, 39.915))
+	fmt.Println(coordtransform.GCJ02toBD09(116.404, 39.915))
+	fmt.Println(coordtransform.WGS84toGCJ02(116.404, 39.915))
+	fmt.Println(coordtransform.GCJ02toWGS84(116.404, 39.915))
+	fmt.Println(coordtransform.BD09toWGS84(116.404, 39.915))
+	fmt.Println(coordtransform.WGS84toBD09(116.404, 39.915))
 }
 
 ```
@@ -57,7 +57,7 @@ Benchmarks
 ```Go
 goos: darwin
 goarch: amd64
-pkg: coordTransform
+pkg: coordtransform
 BenchmarkBD09toGCJ02-4    	20000000	        84.0 ns/op
 BenchmarkGCJ02toBD09-4    	20000000	        91.8 ns/op
 BenchmarkWGS84toBD09-4    	 5000000	       398 ns/op
